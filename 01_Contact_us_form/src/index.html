@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Us Form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="first">
+        <fieldset>
+            <legend>Contact Us</legend>
+            <form action="" class="contact-form">
+                <label for="name">Name:</label>
+                <input class="inp" type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label>
+                <input class="inp" type="email" id="email" name="email" required><br><br>
+                <label for="phone">Phone:</label>
+                <input class="inp" type="tel" id="phone" name="phone" required pattern="[0-9]{10}"><br><br>
+                <label for="message">Message:</label><br>
+                <textarea class="inp" id="message" name="message"></textarea><br><br>
+                <button class="button">Submit</button>
+            </form>
+        </fieldset>
+    </div>
     
 </body>
 </html>
