@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="d-flex vh-100">
+        <!-- Sidebar -->
+        <aside class="bg-white shadow p-4" style="width: 250px;">
+            <h2 class="h5 fw-bold">Task Manager</h2>
+            <nav class="nav flex-column">
+                <a href="#" class="nav-link text-dark">Home</a>
+                <a href="#" class="nav-link text-dark">Boards</a>
+                <a href="#" class="nav-link text-dark">Settings</a>
+                <a href="#" class="nav-link text-dark">Teams</a>
+                <a href="#" class="nav-link text-dark">Analytics</a>
+            </nav>
+            <button class="btn btn-primary w-100 mt-3" onclick="addTask()">Create New Task</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow-1 p-4">
+            <h1 class="h4 fw-bold mb-3">Good night, test-harry!</h1>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header fw-bold">To Do</div>
+                        <div class="card-body" id="todo"></div>
+                        <button class="btn btn-dark w-100" onclick="addTask('todo')">Add New</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header fw-bold">In Progress</div>
+                        <div class="card-body" id="in-progress"></div>
+                        <button class="btn btn-dark w-100" onclick="addTask('in-progress')">Add New</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header fw-bold">Under Review</div>
+                        <div class="card-body" id="under-review"></div>
+                        <button class="btn btn-dark w-100" onclick="addTask('under-review')">Add New</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header fw-bold">Finished</div>
+                        <div class="card-body" id="finished"></div>
+                        <button class="btn btn-dark w-100" onclick="addTask('finished')">Add New</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    
+</body>
+</html>

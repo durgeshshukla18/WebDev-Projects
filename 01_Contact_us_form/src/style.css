@@ -8,6 +8,13 @@ body{
 .first{
     background-color: #b6e7e7;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+
     /* width: 50%; /* Adjust as needed */
     /* height: 400px; /* Adjust as needed */
     /* margin: auto; Centers the section */
@@ -16,15 +23,14 @@ body{
 }
 
 .contact-form{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 0 auto;
+    /* width: 50%; */
+    /* width: 50%; */
+    width: 400px;
+    margin: 10px;
     padding: 20px;
     border: 1px solid #e4611f;
     border-radius: 10px;
-    height: 100vh;
+    /* height: 100vh; */
     /* align-items: center; */
     /* justify-content: center; */
 }
@@ -48,6 +54,7 @@ body{
 }
 
 .inp{
+    width: 100%;
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -63,7 +70,7 @@ body{
 }
 
 legend{
-    margin-left: 45%;
+    margin-left: 40%;
     font-size: 20px;
     font-weight: bold;
 
