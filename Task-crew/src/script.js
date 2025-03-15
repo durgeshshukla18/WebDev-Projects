@@ -45,3 +45,36 @@ for(list of item){
         
     });
 }
+
+
+let ToDoTasks = [
+    {
+        "title": "Buy groceries",
+        "status": "pending",
+        "priority": 2,
+    },
+    {
+        "title": "Finish project",
+        "status": "pending",
+        "priority": 1,
+    },
+    {
+        "title": "Clean room",
+        "status": "done",
+        "priority": 3,
+    }
+];
+
+function displayTasks() {
+    let taskContainer = document.getElementById("ToDo");
+    taskContainer.innerHTML = "";
+
+    ToDoTasks.forEach(task => {
+        let taskElement = document.createElement("div");
+        taskElement.classList.add("task");
+        taskElement.innerHTML = `<strong>${task.title}</strong> - ${task.status}`;
+        taskContainer.appendChild(taskElement);
+    });
+}
+
+displayTasks();
