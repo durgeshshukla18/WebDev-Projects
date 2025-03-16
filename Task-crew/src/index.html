@@ -11,14 +11,14 @@
 
     <div class="page">
         <aside class="aside">
-            <h1>Task-crew</h1>
+            <h4>Task-crew</h4>
             <nav class="nav">
                 <a href="#" class="nav-link">Home</a>
                 <a href="#" class="nav-link">Boards</a>
                 <a href="#" class="nav-link">Settings</a>
                 <a href="#" class="nav-link">Teams</a>
                 <a href="#" class="nav-link">Analytics</a>
-                <button class="AddTaskBtn">Add Task</button>
+                <button class="AddTaskBtn" onclick="openModal()">Add Task</button>
         </aside>
 
         <main>
@@ -53,7 +53,7 @@
                     <div class="Content-box">Automation</div>
                     <div class="Content-box">Filter</div>
                     <div class="Content-box">Share</div>
-                    <button class="AddTaskBtn">Add Task</button>
+                    <button class="AddTaskBtn" onclick="openModal()">Add Task</button>
                 </div>
             </section>
 
@@ -61,30 +61,53 @@
                 <div class="Containers">
                     <div class="container">
                         <h4>ToDo</h4>
-                        <div id="ToDo" class="ToDo">
+                        <div id="ToDo" class="ToDo" ondragover="allowDrop(event)" ondrop="drop(event, 'ToDo')">
                             <!-- <div id="task1" class="Content" draggable="true">Task 1</div>
                             <div id="task2" class="Content" draggable="true">Task 2</div>
                             <div id="task3" class="Content" draggable="true">Task 3</div> -->
                         </div>
                     </div>
-                    <div id="InProgress" class="InProgress">
+                    <div class="container">
                         <h4>InProgress</h4>
-                        <div id="task4" class="Content" draggable="true">Task 4</div>
-                        <div id="task5" class="Content" draggable="true">Task 5</div>
+                        <div id="InProgress" class="InProgress" ondragover="allowDrop(event)" ondrop="drop(event, 'InProgress')">
+                            <!-- <div id="task4" class="Content" draggable="true">Task 4</div>
+                            <div id="task5" class="Content" draggable="true">Task 5</div> -->
+                        </div>
                     </div>
-                    <div id="UnderReview" class="UnderReview">
+                    <div class="container">
                         <h4>Under Review</h4>
-                        <div id="task6" class="Content" draggable="true">Task 6</div>
-                        <div id="task7" class="Content" draggable="true">Task 7</div>
+                        <div id="UnderReview" class="UnderReview" ondragover="allowDrop(event)" ondrop="drop(event, 'UnderReview')">
+                            <!-- <div id="task6" class="Content" draggable="true">Task 6</div>
+                            <div id="task7" class="Content" draggable="true">Task 7</div> -->
+                        </div>
                     </div>
-                    <div id="Finished" class="Finished">
+                    <div class="container">
                         <h4>Finished</h4>
-                        <div id="task8" class="Content" draggable="true">Task 8</div>
-                        <div id="task9" class="Content" draggable="true">Task 9</div>
+                        <div id="Finished" class="Finished" ondragover="allowDrop(event)" ondrop="drop(event, 'Finished')">
+                            <!-- <div id="task8" class="Content" draggable="true">Task 8</div>
+                            <div id="task9" class="Content" draggable="true">Task 9</div> -->
+                        </div>
                     </div>
+
                 </div>
             </section>
         </main>
+
+
+        <div class="overlay" id="overlay"></div>
+        <div class="modal" id="taskModal">
+            <h3>Add New Task</h3>
+            <input type="text" id="taskTitle" placeholder="Enter task title">
+            <select id="taskCategory">
+                <option value="" selected disabled>Select Category</option>
+                <option value="ToDo">To Do</option>
+                <option value="InProgress">In Progress</option>
+                <option value="UnderReview">Under Review</option>
+                <option value="Finished">Finished</option>
+            </select>
+            <button class="ModalBtn" onclick="addTask()">Add Task</button>
+            <button class="ModalBtn" onclick="closeModal()">Cancel</button>
+        </div>
 
 
 

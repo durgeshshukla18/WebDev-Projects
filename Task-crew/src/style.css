@@ -1,12 +1,11 @@
-.page{
-    background-color: #f0f0f0;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-    
+.page {
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 2fr 10fr;
 }
 
 /* .aside{
@@ -15,127 +14,168 @@
 
 } */
 
-.nav{
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.nav {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.nav a{
-    text-decoration: none;
-    color: #333;
-    /* align-items: center; */
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+.nav a {
+  text-decoration: none;
+  color: #333;
+  /* align-items: center; */
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-.AddTaskBtn{
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 50%;
+.AddTaskBtn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 50%;
 }
 
-.Upper-section{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* gap: 10px; */
-    padding: 10px;
-    margin: 10px;
-    /* background-color: #fefefe; */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.Upper-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 10px; */
+  padding: 10px;
+  margin: 10px;
+  /* background-color: #fefefe; */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.Desc-box{
-    padding: 10px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.Desc-box {
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.Mid-bar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
+.Mid-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.Right-content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-
+.Right-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
 }
 
-.Content-box{
-    padding: 10px;
-    /* margin: 10px; */
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.Content-box {
+  padding: 10px;
+  /* margin: 10px; */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.Search-bar{
-    padding: 10px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1);
-}
-
-.AddTaskBtn:hover{
-    background-color: #444;
-
+.Search-bar {
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1);
 }
 
-.Containers{
-    display: grid;
-    grid-template-columns: 3fr 3fr 3fr 3fr;
-    gap: 10px;
-    padding: 10px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.AddTaskBtn:hover {
+  background-color: #444;
 }
 
-.Content{
-    padding: 10px;
-    margin: 5px;
-    background-color: #fff;
-    border: 1px solid #333;
-    border-radius: 10px ;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.Containers {
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 3fr;
+  gap: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.ToDo { 
-    margin: 20px;
-    padding: 10px; 
-    background: #f4f4f4; 
-    border-radius: 5px; 
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+.Content {
+  padding: 10px;
+  margin: 5px;
+  background-color: #fff;
+  border: 1px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.task { background: white; padding: 10px; margin: 5px 0; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0,0,0,0.2); }
 
+.ToDo {
+  margin: 20px;
+  padding: 10px;
+  background: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.task {
+  background: white;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: salmon;
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#taskTitle {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+
+#taskCategory {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+
+.ModalBtn {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
