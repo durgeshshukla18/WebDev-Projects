@@ -1,119 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do App with Pop-Up</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-      }
-
-      button {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-
-      /* Pop-up Modal Styling */
-      .popup {
-        display: none;
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-      }
-
-      .popup-content {
-        background: white;
-        padding: 20px;
-        width: 300px;
-        margin: 100px auto;
-        border-radius: 10px;
-        position: relative;
-      }
-
-      .close {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 20px;
-        cursor: pointer;
-      }
-
-      /* Task List */
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      li {
-        background: #f3f3f3;
-        padding: 10px;
-        margin: 5px auto;
-        width: 50%;
-        border-radius: 5px;
-      }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .task-container { display: flex; gap: 20px; margin-top: 20px; }
+        .task-list { width: 250px; min-height: 250px; background: #f4f4f4; padding: 10px; border-radius: 5px; }
+        .task { background: white; padding: 10px; margin: 5px 0; border-radius: 5px; box-shadow: 0px 0px 5px rgba(0,0,0,0.2); cursor: grab; }
+        .add-btn { background-color: #007bff; color: white; border: none; padding: 8px; cursor: pointer; width: 100%; }
+        .add-btn:hover { background-color: #0056b3; }
+        
+        /* Popup Modal */
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; background: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
+        .modal input, .modal select { width: 100%; padding: 5px; margin: 10px 0; }
+        .modal button { width: 100%; padding: 8px; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
     </style>
-  </head>
-  <body>
-    <h1>To-Do List</h1>
-    <button id="openPopup">Add Task</button>
+</head>
+<body>
 
-    <!-- Pop-up Modal -->
-    <div id="popup" class="popup">
-      <div class="popup-content">
-        <span class="close" id="closePopup">&times;</span>
-        <h2>Add New Task</h2>
-        <input type="text" id="taskInput" placeholder="Enter task here..." />
-        <button id="addTask">Add</button>
-      </div>
+    <h2>Task Manager</h2>
+
+    <div class="task-container">
+        <div id="ToDo" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'ToDo')">
+            <h3>To Do</h3>
+            <button class="add-btn" onclick="openModal('ToDo')">Add Task</button>
+        </div>
+
+        <div id="InProgress" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'InProgress')">
+            <h3>In Progress</h3>
+            <button class="add-btn" onclick="openModal('InProgress')">Add Task</button>
+        </div>
+
+        <div id="UnderReview" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'UnderReview')">
+            <h3>Under Review</h3>
+            <button class="add-btn" onclick="openModal('UnderReview')">Add Task</button>
+        </div>
+
+        <div id="Finished" class="task-list" ondragover="allowDrop(event)" ondrop="drop(event, 'Finished')">
+            <h3>Finished</h3>
+            <button class="add-btn" onclick="openModal('Finished')">Add Task</button>
+        </div>
     </div>
 
-    <!-- Task List -->
-    <ul id="taskList"></ul>
+    <!-- Popup Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="taskModal">
+        <h3>Add New Task</h3>
+        <input type="text" id="taskTitle" placeholder="Enter task title">
+        <select id="taskCategory">
+            <option value="ToDo">To Do</option>
+            <option value="InProgress">In Progress</option>
+            <option value="UnderReview">Under Review</option>
+            <option value="Finished">Finished</option>
+        </select>
+        <button onclick="addTask()">Add Task</button>
+        <button onclick="closeModal()">Cancel</button>
+    </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const openPopupBtn = document.getElementById("openPopup");
-        const closePopupBtn = document.getElementById("closePopup");
-        const popup = document.getElementById("popup");
-        const addTaskBtn = document.getElementById("addTask");
-        const taskInput = document.getElementById("taskInput");
-        const taskList = document.getElementById("taskList");
+        // Array to store tasks
+let tasks = [
+    { id: 1, title: "Design UI", category: "ToDo" },
+    { id: 2, title: "Fix bugs", category: "InProgress" }
+];
 
-        // Open popup
-        openPopupBtn.addEventListener("click", function () {
-          popup.style.display = "block";
-        });
+// Open Modal and set default category
+function openModal(category) {
+    document.getElementById("taskTitle").value = "";
+    document.getElementById("taskCategory").value = category; // Default category
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("taskModal").style.display = "block";
+}
 
-        // Close popup
-        closePopupBtn.addEventListener("click", function () {
-          popup.style.display = "none";
-        });
+// Close Modal
+function closeModal() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("taskModal").style.display = "none";
+}
 
-        // Add task
-        addTaskBtn.addEventListener("click", function () {
-          let taskText = taskInput.value.trim();
-          if (taskText !== "") {
-            let li = document.createElement("li");
-            li.textContent = taskText;
-            taskList.appendChild(li);
-            taskInput.value = ""; // Clear input field
-            popup.style.display = "none"; // Close modal
-          }
-        });
+// Display tasks in respective sections
+function displayTasks() {
+    ["ToDo", "InProgress", "UnderReview", "Finished"].forEach(category => {
+        let section = document.getElementById(category);
+        section.innerHTML = `
+            <h3>${category.replace(/([A-Z])/g, " $1").trim()}</h3>
+            <button class="add-btn" onclick="openModal('${category}')">Add Task</button>
+        `;
 
-        // Close popup when clicking outside of content
-        window.addEventListener("click", function (e) {
-          if (e.target === popup) {
-            popup.style.display = "none";
-          }
+        tasks.filter(task => task.category === category).forEach(task => {
+            let taskElement = document.createElement("div");
+            taskElement.classList.add("task");
+            taskElement.draggable = true;
+            taskElement.id = `task-${task.id}`;
+            taskElement.innerHTML = task.title;
+            taskElement.ondragstart = drag;
+            section.appendChild(taskElement);
         });
-      });
+    });
+}
+
+// Add a new task
+function addTask() {
+    let taskTitle = document.getElementById("taskTitle").value.trim();
+    let taskCategory = document.getElementById("taskCategory").value;
+
+    if (taskTitle === "") {
+        alert("Task title cannot be empty!");
+        return;
+    }
+
+    let newTask = {
+        id: tasks.length + 1,
+        title: taskTitle,
+        category: taskCategory
+    };
+
+    tasks.push(newTask);
+    closeModal();
+    displayTasks();
+}
+
+// Drag & Drop Functionality
+function drag(event) {
+    event.dataTransfer.setData("taskId", event.target.id);
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event, newCategory) {
+    event.preventDefault();
+    let taskId = event.dataTransfer.getData("taskId");
+    let taskIndex = tasks.findIndex(task => `task-${task.id}` === taskId);
+
+    if (taskIndex !== -1) {
+        tasks[taskIndex].category = newCategory;
+        displayTasks(); // Re-render tasks
+    }
+}
+
+// Initial display
+displayTasks();
+
     </script>
-  </body>
+</body>
 </html>
